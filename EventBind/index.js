@@ -16,7 +16,7 @@ function bindEvent(element,type,selector,fn){
     let target=event.target;//触发事件的元素对象
     if(selector){ //代理绑定
       if(target.matches(selector)){
-        fn.call(target,event);
+        fn.call(target,event); //让fn在target环境下执行,实质就是把this指向了触发了事件的元素
       }
     }else{ //普通绑定
       fn.call(target,event)
@@ -24,7 +24,18 @@ function bindEvent(element,type,selector,fn){
   })
 }
 
+/**
+ * test
+ */
 let item=document.getElementsByTagName("li");
-bindEvent(item[0],"click","li",(event)=>{
+bindEvent(item[0],"click","li",function(event){
   console.log(event.target);
+  console.log(this)
+})
+
+function bb(element,type,fn){
+  element.addEventListener(type,fn);
+}
+bb(item[1],"click",function(event){
+  console.log(this)
 })
