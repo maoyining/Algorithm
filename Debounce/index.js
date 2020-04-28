@@ -9,7 +9,7 @@ input1.addEventListener('keyup',function(){
     timer=null;
   },1000)
   
-})
+})  
 
 //把上述防抖的防抖函数封装一下
 function debounce(fn,delay=500){
