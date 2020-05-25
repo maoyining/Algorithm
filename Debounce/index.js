@@ -12,6 +12,7 @@ input1.addEventListener('keyup',function(){
 })  
 
 //把上述防抖的防抖函数封装一下
+//在事件被触发 n 秒后再执行回调，如果在这 n 秒内事件又被触发，则重新计时。
 function debounce(fn,delay=500){
   let timer=null;//timer在闭包中
   return function(){
